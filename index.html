@@ -10,6 +10,9 @@
     --accent:#b3766f;
     --accent-deep:#8c5652;
     --gold:#a9884f;
+    --river:#cfe0e6;
+    --park:#a9b98d;
+    --line5:#8f6fae;
     --shadow: 0 30px 60px -25px rgba(32,26,18,.35);
   }
   @media (prefers-color-scheme: dark){
@@ -23,17 +26,22 @@
       --accent:#d79b93;
       --accent-deep:#b97e77;
       --gold:#c2a06a;
+      --river:#1f2e38;
+      --park:#71875f;
+      --line5:#b79bd1;
       --shadow: 0 30px 60px -25px rgba(0,0,0,.6);
     }
   }
   :root[data-theme="dark"]{
     --bg:#12161c; --card:#1b212a; --ink:#ece4d8; --ink-soft:#a9a196;
     --line:#333c47; --line-soft:#2a323d; --accent:#d79b93; --accent-deep:#b97e77; --gold:#c2a06a;
+    --river:#1f2e38; --park:#71875f; --line5:#b79bd1;
     --shadow: 0 30px 60px -25px rgba(0,0,0,.6);
   }
   :root[data-theme="light"]{
     --bg:#f6f0e6; --card:#fffdf8; --ink:#202b36; --ink-soft:#5c6773;
     --line:#e2d6c7; --line-soft:#ece2d4; --accent:#b3766f; --accent-deep:#8c5652; --gold:#a9884f;
+    --river:#cfe0e6; --park:#a9b98d; --line5:#8f6fae;
     --shadow: 0 30px 60px -25px rgba(32,26,18,.35);
   }
 
@@ -297,26 +305,35 @@
   .venue-sub{
     text-align:center; font-size:.86rem; color:var(--ink-soft); margin-bottom:22px;
   }
-  .map-frame{
-    aspect-ratio:16/10;
+  .map-illustration{
     border-radius:14px;
     border:1px solid var(--line);
-    background:
-      linear-gradient(var(--line-soft) 1px, transparent 1px) 0 0/24px 24px,
-      linear-gradient(90deg, var(--line-soft) 1px, transparent 1px) 0 0/24px 24px,
-      var(--card);
-    position:relative;
-    margin-bottom:20px;
-    display:flex; align-items:center; justify-content:center;
+    overflow:hidden;
+    margin-bottom:14px;
+    background:var(--river);
   }
-  .map-frame .pin{
-    width:16px; height:16px; border-radius:50% 50% 50% 0;
-    background:var(--accent); transform:rotate(-45deg);
-    box-shadow:0 0 0 6px color-mix(in srgb, var(--accent) 18%, transparent);
+  .map-illustration svg{ width:100%; height:auto; display:block; }
+  .map-legend{
+    display:flex; justify-content:center; gap:16px;
+    margin-bottom:8px;
   }
-  .map-links{
-    display:flex; gap:10px;
+  .map-legend .legend-item{
+    display:inline-flex; align-items:center; gap:5px;
+    font-size:.68rem; color:var(--ink-soft);
   }
+  .legend-swatch{
+    display:inline-block; width:14px; height:3px; border-radius:2px;
+  }
+  .legend-swatch.line9{ background:var(--gold); }
+  .legend-swatch.line5{ background:var(--line5); }
+  .legend-dot{
+    display:inline-block; width:8px; height:8px; border-radius:50%; background:var(--accent);
+  }
+  .map-caption{
+    text-align:center; font-size:.72rem; line-height:1.6; color:var(--ink-soft);
+    margin:0 0 20px;
+  }
+  .map-links{ display:flex; gap:10px; }
   .map-links a{
     flex:1;
     text-align:center;
@@ -464,12 +481,62 @@
       <div class="divider"><svg viewBox="0 0 46 14"><path d="M2 7c8-8 14 8 21 0S43 -1 44 7" fill="none" stroke="currentColor" stroke-width="1"/></svg></div>
       <h2 class="section-title">오시는 길</h2>
       <p class="venue-name">여의도 더파티움</p>
-      <p class="venue-sub">정확한 층수 · 홀 이름과 주소는 아래 지도 앱에서 확인해 주세요.</p>
-      <div class="map-frame" role="img" aria-label="여의도 더파티움 위치 안내"><div class="pin"></div></div>
+      <p class="venue-sub">서울 영등포구 은행로 30 · 중소기업중앙회</p>
+
+      <div class="map-illustration" role="img" aria-label="여의도 약도. 서쪽 국회의사당역 인근에 더파티움이 있고, 중앙에 여의도공원, 동쪽 여의도역 인근에 IFC몰과 더현대서울이 있습니다. 지하철 9호선은 국회의사당역과 여의도역을 지나고, 5호선은 여의도역과 여의나루역을 지납니다.">
+        <svg viewBox="0 0 400 230" xmlns="http://www.w3.org/2000/svg" role="presentation">
+          <rect x="0" y="0" width="400" height="230" fill="var(--river)"/>
+          <path d="M0,26 Q50,16 100,26 T200,26 T300,26 T400,26" stroke="var(--card)" stroke-opacity=".3" fill="none" stroke-width="1.5"/>
+          <path d="M0,206 Q50,196 100,206 T200,206 T300,206 T400,206" stroke="var(--card)" stroke-opacity=".3" fill="none" stroke-width="1.5"/>
+          <text x="18" y="16" font-size="9" fill="var(--ink-soft)" opacity=".75" font-style="italic">한강</text>
+          <text x="382" y="222" font-size="9" fill="var(--ink-soft)" opacity=".75" font-style="italic" text-anchor="end">한강</text>
+
+          <path d="M10,120 C12,72 100,50 160,48 C250,45 330,55 372,90 C398,110 398,142 372,162 C330,196 250,205 160,202 C100,200 12,166 10,120 Z" fill="var(--card)" stroke="var(--line)" stroke-width="1.5"/>
+
+          <path d="M15,100 C55,94 85,98 112,104 C160,114 205,116 250,124 C295,132 345,142 385,158" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M55,190 C110,170 170,150 210,136 C225,131 238,127 250,124 C275,116 300,109 330,99 C350,91 368,66 383,38" fill="none" stroke="var(--line5)" stroke-width="2.5" stroke-linecap="round"/>
+
+          <ellipse cx="172" cy="132" rx="36" ry="20" fill="var(--park)" opacity=".55"/>
+          <text x="172" y="135" font-size="8.5" font-weight="600" fill="var(--ink)" text-anchor="middle">여의도공원</text>
+
+          <circle cx="112" cy="104" r="4.5" fill="var(--gold)" stroke="var(--card)" stroke-width="1.5"/>
+          <text x="112" y="119" font-size="8.5" fill="var(--ink-soft)" text-anchor="middle">국회의사당역</text>
+
+          <circle cx="250" cy="124" r="7" fill="var(--card)" stroke="var(--line5)" stroke-width="2"/>
+          <circle cx="250" cy="124" r="3" fill="var(--gold)"/>
+          <text x="250" y="110" font-size="9" font-weight="600" fill="var(--ink)" text-anchor="middle">여의도역</text>
+
+          <circle cx="330" cy="99" r="4.5" fill="var(--line5)" stroke="var(--card)" stroke-width="1.5"/>
+          <text x="330" y="87" font-size="8.5" fill="var(--ink-soft)" text-anchor="middle">여의나루역</text>
+
+          <rect x="267" y="131" width="10" height="15" rx="1.5" fill="var(--card)" stroke="var(--ink-soft)" stroke-width="1"/>
+          <rect x="269.5" y="134" width="2" height="2" fill="var(--ink-soft)"/><rect x="274" y="134" width="2" height="2" fill="var(--ink-soft)"/>
+          <rect x="269.5" y="139" width="2" height="2" fill="var(--ink-soft)"/><rect x="274" y="139" width="2" height="2" fill="var(--ink-soft)"/>
+          <text x="272" y="127" font-size="8" fill="var(--ink-soft)" text-anchor="middle">IFC몰</text>
+
+          <rect x="289" y="123" width="10" height="23" rx="1.5" fill="var(--card)" stroke="var(--ink-soft)" stroke-width="1"/>
+          <rect x="291.5" y="127" width="2" height="2" fill="var(--ink-soft)"/><rect x="296" y="127" width="2" height="2" fill="var(--ink-soft)"/>
+          <rect x="291.5" y="132" width="2" height="2" fill="var(--ink-soft)"/><rect x="296" y="132" width="2" height="2" fill="var(--ink-soft)"/>
+          <rect x="291.5" y="137" width="2" height="2" fill="var(--ink-soft)"/><rect x="296" y="137" width="2" height="2" fill="var(--ink-soft)"/>
+          <text x="294" y="153" font-size="8" fill="var(--ink-soft)" text-anchor="middle">더현대서울</text>
+
+          <line x1="100" y1="80" x2="110" y2="99" stroke="var(--ink-soft)" stroke-width="1" stroke-dasharray="2,2" opacity=".6"/>
+          <path d="M100,52 C108,52 114,58 114,65 C114,74 100,88 100,88 C100,88 86,74 86,65 C86,58 92,52 100,52 Z" fill="var(--accent)" stroke="var(--card)" stroke-width="1"/>
+          <circle cx="100" cy="65" r="2.8" fill="var(--card)"/>
+          <text x="100" y="42" font-size="11" font-weight="700" fill="var(--accent-deep)" text-anchor="middle">더파티움</text>
+        </svg>
+      </div>
+      <div class="map-legend">
+        <span class="legend-item"><i class="legend-swatch line9"></i>9호선</span>
+        <span class="legend-item"><i class="legend-swatch line5"></i>5호선</span>
+        <span class="legend-item"><i class="legend-dot"></i>더파티움</span>
+      </div>
+      <p class="map-caption">국회의사당역 5번 출구에서 도보 5분 · 실제 위치와 다소 차이가 있는 약도이니 정확한 길찾기는 아래 지도 앱을 이용해 주세요.</p>
+
       <div class="map-links">
-        <a href="https://map.naver.com/p/search/%EC%97%AC%EC%9D%98%EB%8F%84%20%EB%8D%94%ED%8C%8C%ED%8B%B0%EC%9B%80" target="_blank" rel="noopener">네이버지도</a>
-        <a href="https://map.kakao.com/?q=%EC%97%AC%EC%9D%98%EB%8F%84%20%EB%8D%94%ED%8C%8C%ED%8B%B0%EC%9B%80" target="_blank" rel="noopener">카카오맵</a>
-        <a href="https://www.google.com/maps/search/?api=1&query=%EC%97%AC%EC%9D%98%EB%8F%84%20%EB%8D%94%ED%8C%8C%ED%8B%B0%EC%9B%80" target="_blank" rel="noopener">구글지도</a>
+        <a href="https://map.naver.com/p/search/%EC%84%9C%EC%9A%B8%20%EC%98%81%EB%93%B1%ED%8F%AC%EA%B5%AC%20%EC%9D%80%ED%96%89%EB%A1%9C%2030" target="_blank" rel="noopener">네이버지도</a>
+        <a href="https://map.kakao.com/?q=%EC%84%9C%EC%9A%B8%20%EC%98%81%EB%93%B1%ED%8F%AC%EA%B5%AC%20%EC%9D%80%ED%96%89%EB%A1%9C%2030" target="_blank" rel="noopener">카카오맵</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=%EC%84%9C%EC%9A%B8%20%EC%98%81%EB%93%B1%ED%8F%AC%EA%B5%AC%20%EC%9D%80%ED%96%89%EB%A1%9C%2030" target="_blank" rel="noopener">구글지도</a>
       </div>
     </section>
 
