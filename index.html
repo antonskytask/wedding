@@ -1,0 +1,554 @@
+<title>안태현 · 김민경 결혼합니다</title>
+<style>
+  :root{
+    --bg:#f6f0e6;
+    --card:#fffdf8;
+    --ink:#202b36;
+    --ink-soft:#5c6773;
+    --line:#e2d6c7;
+    --line-soft:#ece2d4;
+    --accent:#b3766f;
+    --accent-deep:#8c5652;
+    --gold:#a9884f;
+    --shadow: 0 30px 60px -25px rgba(32,26,18,.35);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#12161c;
+      --card:#1b212a;
+      --ink:#ece4d8;
+      --ink-soft:#a9a196;
+      --line:#333c47;
+      --line-soft:#2a323d;
+      --accent:#d79b93;
+      --accent-deep:#b97e77;
+      --gold:#c2a06a;
+      --shadow: 0 30px 60px -25px rgba(0,0,0,.6);
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#12161c; --card:#1b212a; --ink:#ece4d8; --ink-soft:#a9a196;
+    --line:#333c47; --line-soft:#2a323d; --accent:#d79b93; --accent-deep:#b97e77; --gold:#c2a06a;
+    --shadow: 0 30px 60px -25px rgba(0,0,0,.6);
+  }
+  :root[data-theme="light"]{
+    --bg:#f6f0e6; --card:#fffdf8; --ink:#202b36; --ink-soft:#5c6773;
+    --line:#e2d6c7; --line-soft:#ece2d4; --accent:#b3766f; --accent-deep:#8c5652; --gold:#a9884f;
+    --shadow: 0 30px 60px -25px rgba(32,26,18,.35);
+  }
+
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Pretendard','Apple SD Gothic Neo','Malgun Gothic',-apple-system,BlinkMacSystemFont,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+    position:relative;
+    overflow-x:hidden;
+    padding:min(6vw,40px) 0 max(6vw,40px);
+    display:flex;
+    justify-content:center;
+  }
+
+  /* ambient falling snow, decorative, behind the card */
+  .snow{ position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+  .snow span{
+    position:absolute; top:-8%; width:5px; height:5px; border-radius:50%;
+    background:var(--gold); opacity:.35;
+    animation:fall linear infinite;
+  }
+  @keyframes fall{
+    to{ transform:translateY(112vh) translateX(var(--drift,0px)); }
+  }
+  @media (prefers-reduced-motion: reduce){
+    .snow span{ animation:none; display:none; }
+  }
+
+  .stage{ position:relative; z-index:1; width:100%; max-width:440px; padding:0 18px; }
+
+  .card{
+    background:var(--card);
+    border-radius:22px;
+    box-shadow:var(--shadow);
+    overflow:hidden;
+    border:1px solid var(--line-soft);
+  }
+
+  .eyebrow{
+    font-size:.68rem;
+    letter-spacing:.22em;
+    text-transform:uppercase;
+    color:var(--ink-soft);
+    font-weight:600;
+  }
+
+  /* ---------- Cover ---------- */
+  .cover{
+    position:relative;
+    aspect-ratio:4/5;
+    display:flex;
+    align-items:flex-end;
+  }
+  .cover img{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  }
+  .cover::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(to top, rgba(15,12,9,.72) 0%, rgba(15,12,9,.28) 42%, rgba(15,12,9,0) 68%);
+  }
+  .cover-text{
+    position:relative; z-index:1;
+    padding:28px 26px 30px;
+    color:#f6efe4;
+    width:100%;
+  }
+  .cover-text .eyebrow{ color:#e7d9c4; opacity:.85; }
+  .cover-names{
+    font-family:'Nanum Myeongjo','Noto Serif KR','Batangche',serif;
+    font-size:2rem;
+    line-height:1.28;
+    margin:.5em 0 .35em;
+    text-wrap:balance;
+    letter-spacing:.01em;
+    animation:rise .9s ease both;
+  }
+  .cover-names small{
+    display:block;
+    font-family:'Pretendard',sans-serif;
+    font-size:.62em;
+    font-weight:400;
+    color:#d8cbb8;
+    margin-top:.35em;
+    letter-spacing:.05em;
+  }
+  .cover-date{
+    font-size:.82rem;
+    color:#e7d9c4;
+    letter-spacing:.03em;
+    font-variant-numeric:tabular-nums;
+  }
+  @keyframes rise{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:none; } }
+  @media (prefers-reduced-motion: reduce){ .cover-names{ animation:none; } }
+
+  /* ---------- generic section ---------- */
+  section{ padding:44px 30px; }
+  section + section{ border-top:1px solid var(--line); }
+
+  .divider{
+    display:flex; align-items:center; justify-content:center; gap:10px;
+    margin:0 0 22px;
+    color:var(--gold);
+  }
+  .divider svg{ width:46px; height:14px; display:block; }
+  .divider::before,.divider::after{
+    content:""; height:1px; flex:1; background:var(--line);
+  }
+
+  h2.section-title{
+    text-align:center;
+    font-family:'Nanum Myeongjo','Noto Serif KR',serif;
+    font-size:1.32rem;
+    font-weight:500;
+    margin:0 0 20px;
+    color:var(--ink);
+  }
+
+  /* ---------- greeting ---------- */
+  .greeting p{
+    text-align:center;
+    font-size:.98rem;
+    line-height:1.95;
+    color:var(--ink-soft);
+    word-break:keep-all;
+    margin:0;
+  }
+  .greeting .signoff{
+    margin-top:26px;
+    text-align:center;
+    font-size:.9rem;
+    color:var(--ink);
+    font-family:'Nanum Myeongjo','Noto Serif KR',serif;
+    letter-spacing:.02em;
+  }
+
+  /* ---------- names / family ---------- */
+  .family{
+    display:flex;
+    flex-direction:column;
+    gap:22px;
+  }
+  .family-side{ font-size:.86rem; color:var(--ink-soft); }
+  .family-parents{
+    font-size:.86rem;
+    color:var(--ink-soft);
+    text-align:center;
+    line-height:1.7;
+  }
+  .family-name{
+    font-family:'Nanum Myeongjo','Noto Serif KR',serif;
+    font-size:1.5rem;
+    color:var(--ink);
+  }
+  .family-name em{
+    font-style:normal;
+    color:var(--accent-deep);
+  }
+  .family-block{ text-align:center; padding:6px 0; }
+  .family-and{
+    text-align:center;
+    color:var(--gold);
+    font-family:'Nanum Myeongjo',serif;
+    font-size:1rem;
+    letter-spacing:.3em;
+    margin:2px 0;
+  }
+
+  /* ---------- when / calendar ---------- */
+  .when-summary{
+    text-align:center;
+    margin-bottom:26px;
+  }
+  .when-summary .big-date{
+    font-family:'Nanum Myeongjo','Noto Serif KR',serif;
+    font-size:1.6rem;
+    color:var(--ink);
+  }
+  .when-summary .sub{
+    margin-top:6px;
+    font-size:.88rem;
+    color:var(--ink-soft);
+  }
+  .dday{
+    display:inline-flex;
+    margin-top:14px;
+    padding:7px 18px;
+    border:1px solid var(--gold);
+    border-radius:999px;
+    color:var(--accent-deep);
+    font-size:.8rem;
+    letter-spacing:.05em;
+    font-variant-numeric:tabular-nums;
+  }
+
+  .calendar{ width:100%; border-collapse:collapse; }
+  .calendar caption{
+    font-size:.78rem;
+    letter-spacing:.1em;
+    color:var(--ink-soft);
+    padding-bottom:12px;
+    font-variant-numeric:tabular-nums;
+  }
+  .calendar th,.calendar td{
+    width:14.28%;
+    text-align:center;
+    padding:8px 0;
+    font-size:.82rem;
+    font-variant-numeric:tabular-nums;
+    color:var(--ink-soft);
+  }
+  .calendar th{
+    font-weight:600;
+    font-size:.68rem;
+    letter-spacing:.06em;
+    color:var(--ink-soft);
+    border-bottom:1px solid var(--line);
+    padding-bottom:10px;
+  }
+  .calendar th:first-child, .calendar td:first-child{ color:var(--accent-deep); }
+  .calendar td.wed-day{ position:relative; color:var(--card); font-weight:700; }
+  .calendar td.wed-day span{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:28px; height:28px; border-radius:50%;
+    background:var(--accent);
+  }
+
+  /* ---------- gallery ---------- */
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:8px;
+  }
+  .gallery figure{
+    margin:0; position:relative; aspect-ratio:1/1; overflow:hidden; border-radius:10px;
+    background:var(--line-soft);
+  }
+  .gallery img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .gallery figcaption{
+    position:absolute; top:8px; left:8px;
+    font-size:.62rem; letter-spacing:.06em;
+    background:rgba(20,16,12,.42); color:#f4ead9;
+    padding:2px 7px; border-radius:999px;
+    font-variant-numeric:tabular-nums;
+  }
+  .gallery-note{
+    text-align:center; margin-top:16px; font-size:.74rem; color:var(--ink-soft);
+  }
+
+  /* ---------- where ---------- */
+  .venue-name{
+    text-align:center;
+    font-family:'Nanum Myeongjo','Noto Serif KR',serif;
+    font-size:1.4rem;
+    margin-bottom:6px;
+  }
+  .venue-sub{
+    text-align:center; font-size:.86rem; color:var(--ink-soft); margin-bottom:22px;
+  }
+  .map-frame{
+    aspect-ratio:16/10;
+    border-radius:14px;
+    border:1px solid var(--line);
+    background:
+      linear-gradient(var(--line-soft) 1px, transparent 1px) 0 0/24px 24px,
+      linear-gradient(90deg, var(--line-soft) 1px, transparent 1px) 0 0/24px 24px,
+      var(--card);
+    position:relative;
+    margin-bottom:20px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .map-frame .pin{
+    width:16px; height:16px; border-radius:50% 50% 50% 0;
+    background:var(--accent); transform:rotate(-45deg);
+    box-shadow:0 0 0 6px color-mix(in srgb, var(--accent) 18%, transparent);
+  }
+  .map-links{
+    display:flex; gap:10px;
+  }
+  .map-links a{
+    flex:1;
+    text-align:center;
+    padding:11px 0;
+    border-radius:10px;
+    border:1px solid var(--line);
+    color:var(--ink);
+    text-decoration:none;
+    font-size:.82rem;
+    transition:border-color .15s, color .15s;
+  }
+  .map-links a:hover, .map-links a:focus-visible{
+    border-color:var(--accent);
+    color:var(--accent-deep);
+  }
+  .map-links a:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+
+  /* ---------- closing ---------- */
+  .closing{ text-align:center; }
+  .closing p{
+    font-size:.9rem; line-height:1.85; color:var(--ink-soft); word-break:keep-all; margin:0 0 22px;
+  }
+  .closing .thanks{
+    font-family:'Nanum Myeongjo','Noto Serif KR',serif;
+    font-size:1.1rem; color:var(--ink); margin-bottom:24px;
+  }
+  .share-btn{
+    display:inline-flex; align-items:center; gap:8px;
+    padding:11px 22px;
+    border-radius:999px;
+    border:1px solid var(--gold);
+    background:none;
+    color:var(--accent-deep);
+    font-size:.82rem;
+    letter-spacing:.03em;
+    cursor:pointer;
+    font-family:inherit;
+  }
+  .share-btn:hover{ background:color-mix(in srgb, var(--gold) 10%, transparent); }
+  .share-btn:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+
+  footer.foot{
+    text-align:center;
+    padding:22px 0 4px;
+    font-size:.7rem;
+    color:var(--ink-soft);
+    opacity:.7;
+    letter-spacing:.05em;
+  }
+</style>
+
+<div class="snow" id="snow" aria-hidden="true"></div>
+
+<div class="stage">
+  <div class="card">
+
+    <!-- ============ 1. 커버 : 대표 사진을 이 자리에 넣어주세요 (사진 1) ============ -->
+    <div class="cover">
+      <img id="ph-0" alt="신랑 신부 대표 사진 (교체해주세요)" />
+      <div class="cover-text">
+        <p class="eyebrow">Wedding Invitation</p>
+        <p class="cover-names">안태현<small>&nbsp;그리고&nbsp;</small>김민경<small>결혼합니다</small></p>
+        <p class="cover-date">2027. 01. 24. SUN 2:00 PM · 여의도 더컨벤션</p>
+      </div>
+    </div>
+
+    <!-- ============ 2. 모시는 글 ============ -->
+    <section class="greeting">
+      <div class="divider"><svg viewBox="0 0 46 14"><path d="M2 7c8-8 14 8 21 0S43 -1 44 7" fill="none" stroke="currentColor" stroke-width="1"/></svg></div>
+      <h2 class="section-title">모시는 글</h2>
+      <p>
+        겨울 볕이 유리창을 지나 방 안 깊숙이 들어오는 계절,<br>
+        오래 서로를 바라보던 두 사람이<br>
+        이제 나란히 같은 곳을 바라보며 걷기로 하였습니다.<br><br>
+        걸어온 길보다 걸어갈 길이 더 기대되는 이 시작에,<br>
+        저희의 첫걸음을 가장 가까이에서 지켜봐 주시면<br>
+        더없이 큰 힘이 되겠습니다.
+      </p>
+      <p class="signoff">안태현 · 김민경 올림</p>
+    </section>
+
+    <!-- ============ 3. 신랑 신부 소개 ============ -->
+    <section class="family">
+      <div class="divider"><svg viewBox="0 0 46 14"><path d="M2 7c8-8 14 8 21 0S43 -1 44 7" fill="none" stroke="currentColor" stroke-width="1"/></svg></div>
+      <div class="family-block">
+        <p class="family-side">신랑</p>
+        <p class="family-name"><em>안태현</em></p>
+        <p class="family-parents">안길운 · 김신향 의 아들</p>
+      </div>
+      <p class="family-and">·</p>
+      <div class="family-block">
+        <p class="family-side">신부</p>
+        <p class="family-name"><em>김민경</em></p>
+        <p class="family-parents">김도형 · 강미선 의 딸</p>
+      </div>
+    </section>
+
+    <!-- ============ 4. 예식 일시 + 캘린더 ============ -->
+    <section class="when">
+      <div class="divider"><svg viewBox="0 0 46 14"><path d="M2 7c8-8 14 8 21 0S43 -1 44 7" fill="none" stroke="currentColor" stroke-width="1"/></svg></div>
+      <h2 class="section-title">예식 안내</h2>
+      <div class="when-summary">
+        <p class="big-date">2027년 1월 24일 일요일</p>
+        <p class="sub">오후 2시 · 여의도 더컨벤션</p>
+        <span class="dday" id="dday">D-DAY 계산 중…</span>
+      </div>
+      <table class="calendar">
+        <caption>JANUARY 2027</caption>
+        <thead>
+          <tr><th>일</th><th>월</th><th>화</th><th>수</th><th>목</th><th>금</th><th>토</th></tr>
+        </thead>
+        <tbody>
+          <tr><td></td><td></td><td></td><td></td><td></td><td>1</td><td>2</td></tr>
+          <tr><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td></tr>
+          <tr><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td></tr>
+          <tr><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td></tr>
+          <tr><td class="wed-day"><span>24</span></td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td></tr>
+          <tr><td>31</td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- ============ 5. 갤러리 : 사진 2~10 (총 10장) 을 이 자리에 넣어주세요 ============ -->
+    <section class="gallery-section">
+      <div class="divider"><svg viewBox="0 0 46 14"><path d="M2 7c8-8 14 8 21 0S43 -1 44 7" fill="none" stroke="currentColor" stroke-width="1"/></svg></div>
+      <h2 class="section-title">우리의 순간들</h2>
+      <div class="gallery" id="gallery">
+        <!-- 아래 9칸은 스크립트가 채웁니다. 실제 사진으로 교체할 때는
+             각 <img id="ph-N">의 src 값만 실제 사진 경로로 바꿔주세요. -->
+        <figure><img id="ph-1" alt="사진 2 (교체해주세요)"><figcaption>02</figcaption></figure>
+        <figure><img id="ph-2" alt="사진 3 (교체해주세요)"><figcaption>03</figcaption></figure>
+        <figure><img id="ph-3" alt="사진 4 (교체해주세요)"><figcaption>04</figcaption></figure>
+        <figure><img id="ph-4" alt="사진 5 (교체해주세요)"><figcaption>05</figcaption></figure>
+        <figure><img id="ph-5" alt="사진 6 (교체해주세요)"><figcaption>06</figcaption></figure>
+        <figure><img id="ph-6" alt="사진 7 (교체해주세요)"><figcaption>07</figcaption></figure>
+        <figure><img id="ph-7" alt="사진 8 (교체해주세요)"><figcaption>08</figcaption></figure>
+        <figure><img id="ph-8" alt="사진 9 (교체해주세요)"><figcaption>09</figcaption></figure>
+        <figure><img id="ph-9" alt="사진 10 (교체해주세요)"><figcaption>10</figcaption></figure>
+      </div>
+      <p class="gallery-note">지금은 임시 이미지입니다. 준비하신 사진 10장으로 교체해 주세요.</p>
+    </section>
+
+    <!-- ============ 6. 오시는 길 ============ -->
+    <section class="where">
+      <div class="divider"><svg viewBox="0 0 46 14"><path d="M2 7c8-8 14 8 21 0S43 -1 44 7" fill="none" stroke="currentColor" stroke-width="1"/></svg></div>
+      <h2 class="section-title">오시는 길</h2>
+      <p class="venue-name">여의도 더컨벤션</p>
+      <p class="venue-sub">정확한 층수 · 홀 이름과 주소는 아래 지도 앱에서 확인해 주세요.</p>
+      <div class="map-frame" role="img" aria-label="여의도 더컨벤션 위치 안내"><div class="pin"></div></div>
+      <div class="map-links">
+        <a href="https://map.naver.com/p/search/%EC%97%AC%EC%9D%98%EB%8F%84%20%EB%8D%94%EC%BB%A8%EB%B1%90%EC%85%98" target="_blank" rel="noopener">네이버지도</a>
+        <a href="https://map.kakao.com/?q=%EC%97%AC%EC%9D%98%EB%8F%84%20%EB%8D%94%EC%BB%A8%EB%B1%90%EC%85%98" target="_blank" rel="noopener">카카오맵</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=%EC%97%AC%EC%9D%98%EB%8F%84%20%EB%8D%94%EC%BB%A8%EB%B1%90%EC%85%98" target="_blank" rel="noopener">구글지도</a>
+      </div>
+    </section>
+
+    <!-- ============ 7. 마무리 ============ -->
+    <section class="closing">
+      <div class="divider"><svg viewBox="0 0 46 14"><path d="M2 7c8-8 14 8 21 0S43 -1 44 7" fill="none" stroke="currentColor" stroke-width="1"/></svg></div>
+      <p class="thanks">참석해 주시는 걸음 하나하나가<br>저희에게는 가장 큰 선물입니다.</p>
+      <p>2027년 1월 24일 일요일 오후 2시<br>여의도 더컨벤션에서 기다리고 있겠습니다.</p>
+      <button class="share-btn" id="shareBtn" type="button">청첩장 링크 공유하기</button>
+    </section>
+
+    <footer class="foot">안태현 · 김민경 의 결혼식에 초대합니다</footer>
+  </div>
+</div>
+
+<script>
+  // 임시(placeholder) 이미지 생성 — 실제 사진 준비되면 각 <img id="ph-N">의 src만 바꿔주면 됩니다.
+  (function(){
+    var tones = ['#c9a9a2','#a9b9bd','#d9c6a8','#b6a08f','#9fb0a6','#c2938c','#aeb8c4','#cbb28f','#a3a493','#c7a6ae'];
+    for (var i = 0; i < 10; i++){
+      var el = document.getElementById('ph-' + i);
+      if (!el) continue;
+      var tone = tones[i % tones.length];
+      var label = i === 0 ? '대표 사진' : ('사진 ' + (i + 1));
+      var svg = '<svg xmlns="http://www.w3.org/2000/svg" width="480" height="480">' +
+        '<rect width="480" height="480" fill="' + tone + '"/>' +
+        '<rect width="480" height="480" fill="black" opacity="0.06"/>' +
+        '<text x="240" y="250" font-family="sans-serif" font-size="26" fill="white" ' +
+        'text-anchor="middle" opacity="0.85">' + label + '</text></svg>';
+      el.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+    }
+  })();
+
+  // D-day 계산
+  (function(){
+    var el = document.getElementById('dday');
+    var wedding = new Date(2027, 0, 24, 14, 0, 0);
+    var now = new Date();
+    var diffDays = Math.ceil((wedding - now) / 86400000);
+    el.textContent = diffDays > 0 ? ('결혼식까지 D-' + diffDays)
+      : diffDays === 0 ? '오늘, 결혼식 날입니다'
+      : '함께한 지 ' + Math.abs(diffDays) + '일';
+  })();
+
+  // 링크 공유
+  (function(){
+    var btn = document.getElementById('shareBtn');
+    btn.addEventListener('click', function(){
+      var url = location.href;
+      if (navigator.share) {
+        navigator.share({ title: '안태현 · 김민경 결혼합니다', url: url }).catch(function(){});
+      } else if (navigator.clipboard) {
+        navigator.clipboard.writeText(url).then(function(){
+          btn.textContent = '링크가 복사되었습니다';
+          setTimeout(function(){ btn.textContent = '청첩장 링크 공유하기'; }, 1800);
+        });
+      }
+    });
+  })();
+
+  // 눈 내리는 배경 (장식용)
+  (function(){
+    var host = document.getElementById('snow');
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    for (var i = 0; i < 26; i++){
+      var s = document.createElement('span');
+      var left = Math.random() * 100;
+      var dur = 9 + Math.random() * 10;
+      var delay = Math.random() * 10;
+      var size = 3 + Math.random() * 3;
+      var drift = (Math.random() * 60 - 30) + 'px';
+      s.style.left = left + 'vw';
+      s.style.width = size + 'px';
+      s.style.height = size + 'px';
+      s.style.animationDuration = dur + 's';
+      s.style.animationDelay = '-' + delay + 's';
+      s.style.setProperty('--drift', drift);
+      host.appendChild(s);
+    }
+  })();
+</script>
